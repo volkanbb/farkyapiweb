@@ -64,4 +64,22 @@ export class HomeComponent implements OnInit {
     const cleanNumber = this.settings.phone.replace(/\D/g, '');
     return `https://wa.me/${cleanNumber}`;
   }
+
+  getStatusText(status: number): string {
+    switch(status) {
+      case 0: return 'Devam Ediyor';
+      case 1: return 'Tamamlandı';
+      case 2: return 'Gelecek Proje';
+      default: return '';
+    }
+  }
+
+  getStatusClass(status: number): string {
+    switch(status) {
+      case 0: return 'status-ongoing';
+      case 1: return 'status-completed';
+      case 2: return 'status-upcoming';
+      default: return '';
+    }
+  }
 }

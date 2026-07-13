@@ -53,6 +53,9 @@
           <div class="project-card" *ngFor="let project of projects" [routerLink]="['/projelerimiz', project.slug]">
             <div class="project-image">
               <img [src]="project.mainImageUrl || project.coverImageUrl || 'assets/images/project1.png'" [alt]="project.title">
+              <div *ngIf="project.status !== undefined" class="status-badge" [ngClass]="getStatusClass(project.status)">
+                {{ getStatusText(project.status) }}
+              </div>
             </div>
             <div class="project-info">
               <h3>{{ project.title }}</h3>
@@ -65,6 +68,7 @@
             <div class="project-card" routerLink="/projelerimiz">
               <div class="project-image">
                 <img src="assets/images/project1.png" alt="Örnek Proje 1">
+                <div class="status-badge status-completed">Tamamlandı</div>
               </div>
               <div class="project-info">
                 <h3>Örnek Proje 1</h3>
@@ -74,6 +78,7 @@
             <div class="project-card" routerLink="/projelerimiz">
               <div class="project-image">
                 <img src="assets/images/project2.png" alt="Örnek Proje 2">
+                <div class="status-badge status-ongoing">Devam Ediyor</div>
               </div>
               <div class="project-info">
                 <h3>Örnek Proje 2</h3>
@@ -83,6 +88,7 @@
             <div class="project-card" routerLink="/projelerimiz">
               <div class="project-image">
                 <img src="assets/images/hero_bg.png" alt="Örnek Proje 3">
+                <div class="status-badge status-completed">Tamamlandı</div>
               </div>
               <div class="project-info">
                 <h3>Örnek Proje 3</h3>
@@ -92,6 +98,7 @@
             <div class="project-card" routerLink="/projelerimiz">
               <div class="project-image">
                 <img src="assets/images/project1.png" alt="Örnek Proje 4">
+                <div class="status-badge status-upcoming">Gelecek Proje</div>
               </div>
               <div class="project-info">
                 <h3>Örnek Proje 4</h3>
