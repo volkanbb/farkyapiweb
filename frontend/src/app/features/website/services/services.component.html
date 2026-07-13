@@ -1,0 +1,45 @@
+<main class="page-container">
+  <div class="page-header">
+    <div class="container">
+      <h1>HİZMETLERİMİZ</h1>
+    </div>
+  </div>
+  
+  <div class="page-content">
+    <div class="container">
+      <ul class="services-list-page" *ngIf="services && services.length > 0">
+        <li *ngFor="let service of services">
+          <strong>{{ service.title }}</strong>
+          <p>{{ service.description || service.shortDescription }}</p>
+        </li>
+      </ul>
+      
+      <ul class="services-list-page" *ngIf="!services || services.length === 0">
+        <li>
+          <strong>Anahtar Teslim Konut Projeleri</strong>
+          <p>Arsa seçiminden proje teslimine kadar tüm inşaat sürecini profesyonel olarak yönetiyor, yaşamaya hazır konutlar inşa ediyoruz.</p>
+        </li>
+        <li>
+          <strong>Kat Karşılığı İnşaat</strong>
+          <p>Arsa sahipleriyle güvene dayalı iş ortaklığı kurarak, modern ve değer kazandıran projeleri kat karşılığı modeliyle hayata geçiriyoruz.</p>
+        </li>
+        <li>
+          <strong>Yap-Sat Projeleri</strong>
+          <p>Estetik, kaliteli ve fonksiyonel yaşam alanları tasarlayarak yatırım değeri yüksek konut projeleri geliştiriyoruz.</p>
+        </li>
+        <li>
+          <strong>Apartman ve Site Projeleri</strong>
+          <p>Modern mimari, sağlam yapı ve yüksek yaşam standartlarını bir araya getiren apartman ve site projeleri üretiyoruz.</p>
+        </li>
+        <li>
+          <strong>Arsa Geliştirme ve Proje Danışmanlığı</strong>
+          <p>Arsanızın en verimli şekilde değerlendirilmesi için fizibilite, planlama ve proje geliştirme süreçlerinde uzman danışmanlık sunuyoruz.</p>
+        </li>
+        <li>
+          <strong>İnşaat Taahhüt Hizmetleri</strong>
+          <p>Kamu ve özel sektör projelerinde kalite, zamanında teslim ve güvenlik uygulama anlayışıyla taahhüt hizmetleri sağlıyoruz.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>

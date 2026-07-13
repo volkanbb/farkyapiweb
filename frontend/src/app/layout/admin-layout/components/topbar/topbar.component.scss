@@ -1,0 +1,114 @@
+.topbar {
+  height: var(--topbar-height);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  width: 300px;
+  transition: var(--transition-fast);
+  
+  &:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+  
+  .material-icons-outlined {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+  }
+  
+  input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    padding-left: 0.75rem;
+    width: 100%;
+    
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  .notifications {
+    position: relative;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    
+    &:hover {
+      color: var(--text-primary);
+    }
+    
+    .badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent-secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-secondary);
+    }
+  }
+  
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    border-radius: 2rem;
+    transition: var(--transition-fast);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-primary);
+    }
+    
+    .info {
+      display: flex;
+      flex-direction: column;
+      
+      .name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+      
+      .role {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+    }
+  }
+}

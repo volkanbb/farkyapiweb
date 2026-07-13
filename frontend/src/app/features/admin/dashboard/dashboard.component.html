@@ -1,0 +1,64 @@
+<div class="dashboard-container" *ngIf="!loading">
+  <div class="header">
+    <h1 class="page-title">Kontrol Paneli</h1>
+    <p class="subtitle">Hoş geldiniz! Sisteminizdeki son durum.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card glass-panel">
+      <div class="icon-wrapper">
+        <span class="material-icons-outlined text-gradient">business</span>
+      </div>
+      <div class="content">
+        <span class="label">Toplam Proje</span>
+        <span class="value">{{ totalProjects }}</span>
+      </div>
+    </div>
+    
+    <div class="stat-card glass-panel">
+      <div class="icon-wrapper">
+        <span class="material-icons-outlined text-gradient">build</span>
+      </div>
+      <div class="content">
+        <span class="label">Hizmet Sayısı</span>
+        <span class="value">{{ totalServices }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recent-projects glass-panel">
+    <div class="section-header">
+      <h2>Son Eklenen Projeler</h2>
+      <button class="btn btn-primary" routerLink="/admin/projects">Tümünü Gör</button>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="modern-table" *ngIf="recentProjects.length > 0; else noProjects">
+        <thead>
+          <tr>
+            <th>Proje Adı</th>
+            <th>Müşteri</th>
+            <th>Durum</th>
+            <th>Tarih</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of recentProjects; let i = index">
+            <td>
+              <div class="project-info">
+                <div class="color-dot" [style.background]="i % 2 === 0 ? 'var(--accent-primary)' : 'var(--accent-secondary)'"></div>
+                <span>{{ project.title }}</span>
+              </div>
+            </td>
+            <td>{{ project.client || '-' }}</td>
+            <td><span class="badge" [ngClass]="getStatusBadgeClass(project.status)">{{ getStatusText(project.status) }}</span></td>
+            <td>{{ project.projectDate | date:'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noProjects>
+        <p style="padding: 1rem; color: var(--text-secondary);">Henüz eklenmiş proje bulunmuyor.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

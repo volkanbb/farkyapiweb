@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: farkyapi_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-SecurePassword123!}
+      POSTGRES_DB: ${DB_NAME:-farkyapi_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - farkyapi_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: farkyapi_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@farkyapi.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - farkyapi_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: farkyapi_backend
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
+      - ConnectionStrings__DefaultConnection=Host=${DB_HOST:-postgres};Port=${DB_PORT:-5432};Database=${DB_NAME:-farkyapi_db};Username=${DB_USER:-postgres};Password=${DB_PASSWORD:-SecurePassword123!}
+      - JwtSettings__Secret=${JWT_SECRET}
+      - JwtSettings__Issuer=${JWT_ISSUER}
+      - JwtSettings__Audience=${JWT_AUDIENCE}
+    volumes:
+      - backend_uploads:/app/wwwroot/uploads
+    depends_on:
+      - postgres
+    networks:
+      - farkyapi_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: farkyapi_frontend
+    restart: always
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+    depends_on:
+      - backend
+    networks:
+      - farkyapi_network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: farkyapi_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - farkyapi_network
+
+networks:
+  farkyapi_network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  backend_uploads:

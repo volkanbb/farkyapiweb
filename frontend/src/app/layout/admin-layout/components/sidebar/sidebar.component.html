@@ -1,0 +1,45 @@
+<aside class="sidebar">
+  <div class="brand">
+    <span class="material-icons-outlined icon">architecture</span>
+    <span class="text-gradient">Fark Yapı</span>
+  </div>
+  
+  <ul class="nav-menu">
+    <li class="nav-item">
+      <a routerLink="/admin/dashboard" routerLinkActive="active" class="nav-link">
+        <span class="material-icons-outlined">dashboard</span>
+        Kontrol Paneli
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/admin/projects" routerLinkActive="active" class="nav-link">
+        <span class="material-icons-outlined">business</span>
+        Projeler
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/admin/services" routerLinkActive="active" class="nav-link">
+        <span class="material-icons-outlined">build</span>
+        Hizmetler
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/admin/settings" routerLinkActive="active" class="nav-link">
+        <span class="material-icons-outlined">settings</span>
+        Site Ayarları
+      </a>
+    </li>
+    <li class="nav-item" style="margin-top: 2rem;">
+      <a routerLink="/" class="nav-link">
+        <span class="material-icons-outlined">home</span>
+        Ana Sayfaya Dön
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="javascript:void(0)" (click)="logout()" class="nav-link" style="color: #ef4444;">
+        <span class="material-icons-outlined">logout</span>
+        Çıkış Yap
+      </a>
+    </li>
+  </ul>
+</aside>

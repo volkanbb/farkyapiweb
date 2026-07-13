@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.angular/
+.vscode/
+.idea/
+.env
+.DS_Store
+Thumbs.db
+
+# C# / .NET Ignore
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.[Dd]ot[Ss]ettings
+*.[Dd]ot[Ss]ettings.user
+.vs/
+
+# Postgres
+pgdata/

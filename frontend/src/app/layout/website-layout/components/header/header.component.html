@@ -1,0 +1,30 @@
+<header class="website-header" [class.scrolled]="isScrolled">
+  <div class="header-inner">
+    <div class="logo">
+      <a routerLink="/" (click)="isMenuOpen = false">
+        <img src="assets/images/logo.png" alt="FARK YAPI" class="brand-logo">
+      </a>
+    </div>
+    
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-links" [class.open]="isMenuOpen">
+      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="isMenuOpen = false">ANA SAYFA</a>
+      <a routerLink="/hakkimizda" class="nav-link" routerLinkActive="active" (click)="isMenuOpen = false">HAKKIMIZDA</a>
+      <a routerLink="/hizmetlerimiz" class="nav-link" routerLinkActive="active" (click)="isMenuOpen = false">HİZMETLERİMİZ</a>
+      <a routerLink="/projelerimiz" class="nav-link" routerLinkActive="active" (click)="isMenuOpen = false">PROJELERİMİZ</a>
+      <a routerLink="/iletisim" class="nav-link" routerLinkActive="active" (click)="isMenuOpen = false">İLETİŞİM</a>
+    </nav>
+    
+    <div class="actions">
+      <button class="btn-blue header-btn" routerLink="/iletisim" (click)="isMenuOpen = false">
+        <span class="material-icons-outlined">phone_in_talk</span>
+        <span class="btn-text">BİLGİ AL</span>
+      </button>
+    </div>
+  </div>
+</header>

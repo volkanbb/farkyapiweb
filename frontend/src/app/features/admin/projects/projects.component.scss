@@ -1,0 +1,210 @@
+.projects-container {
+  padding: 1rem 0;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+  }
+}
+
+.form-card {
+  margin-bottom: 2rem;
+  
+  h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  th {
+    font-weight: 600;
+    color: var(--text-muted);
+    background: #fafafa;
+  }
+
+  .cover-thumb {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .no-image {
+    font-size: 0.8rem;
+    color: #999;
+    background: #eee;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    
+    &.edit {
+      color: var(--primary-blue);
+      &:hover { background: rgba(0, 140, 210, 0.1); }
+    }
+    
+    &.delete {
+      color: #ef4444;
+      &:hover { background: rgba(239, 68, 68, 0.1); }
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Drag and Drop List Styles */
+.drag-drop-list {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.drag-drop-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #eee;
+  background: white;
+  gap: 1rem;
+  cursor: default;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .drag-handle {
+    cursor: move;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: var(--primary-blue);
+    }
+  }
+
+  .drag-image {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .delete-img {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #fee2e2;
+    }
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: white;
+  gap: 1rem;
+  
+  .drag-image {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag-drop-list.cdk-drop-list-dragging .drag-drop-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.no-images {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  background: #f9f9f9;
+}

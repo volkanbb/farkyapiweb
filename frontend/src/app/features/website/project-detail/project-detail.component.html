@@ -1,0 +1,61 @@
+<main class="page-container">
+  <div class="page-header">
+    <div class="container">
+      <h1 *ngIf="project">{{ project.title | uppercase }}</h1>
+      <h1 *ngIf="!project">PROJE DETAYI</h1>
+    </div>
+  </div>
+
+  <div class="page-content" *ngIf="loading">
+    <div class="container loading-state">
+      Proje yükleniyor...
+    </div>
+  </div>
+  
+  <div class="page-content" *ngIf="!loading && project">
+    <div class="container">
+      <div class="project-detail-layout">
+        <!-- Main Info -->
+        <div class="main-info">
+          <!-- Image Slider -->
+          <div class="slider-container" *ngIf="allImages.length > 0; else noImage">
+            <button class="slider-btn prev" (click)="prevImage()" *ngIf="allImages.length > 1">&#10094;</button>
+            <img [src]="allImages[currentImageIndex]" [alt]="project.title" class="slider-image">
+            <button class="slider-btn next" (click)="nextImage()" *ngIf="allImages.length > 1">&#10095;</button>
+            
+            <div class="slider-dots" *ngIf="allImages.length > 1">
+              <span class="dot" *ngFor="let img of allImages; let i = index" 
+                    [class.active]="i === currentImageIndex" 
+                    (click)="setCurrentImage(i)"></span>
+            </div>
+          </div>
+          <ng-template #noImage>
+            <div class="slider-container">
+              <img src="assets/images/placeholder.png" [alt]="project.title || 'Görsel Yok'" class="slider-image">
+            </div>
+          </ng-template>
+          
+          <div class="project-description">
+            <ng-container *ngIf="project.shortDescription">
+              <h2>Proje Özeti</h2>
+              <p class="lead-text">{{ project.shortDescription }}</p>
+            </ng-container>
+            
+            <ng-container *ngIf="project.description">
+              <h2>Hakkında</h2>
+              <div class="detail-text">{{ project.description }}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content" *ngIf="!loading && !project">
+    <div class="container not-found">
+      Proje bulunamadı.
+      <br>
+      <a routerLink="/projelerimiz" class="back-link">Projelere Dön</a>
+    </div>
+  </div>
+</main>

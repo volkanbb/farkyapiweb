@@ -1,0 +1,37 @@
+<main class="page-container">
+  <div class="page-header">
+    <div class="container">
+      <h1 *ngIf="settings?.aboutTitle" [innerHTML]="settings?.aboutTitle"></h1>
+      <h1 *ngIf="!settings?.aboutTitle">Güvenle İnşa Ediyor, Geleceği Birlikte Yükseltiyoruz</h1>
+    </div>
+  </div>
+  
+  <div class="page-content bg-light-blue">
+    <div class="container">
+      <div class="white-card">
+        <div *ngIf="settings?.aboutDescription" [innerHTML]="settings?.aboutDescription"></div>
+        
+        <ng-container *ngIf="!settings?.aboutDescription">
+          <p class="about-text">
+            2015 yılından bu yana Bursa'nın İnegöl ilçesinde faaliyet gösteren FARK YAPI, kalite, güven ve müşteri memnuniyetini esas alarak modern yaşam alanları inşa etmektedir.
+          </p>
+          <p class="about-text">
+            Kurucumuz Faruk Çengel, yaklaşık 40 yıllık müteahhitlik tecrübesine sahip babasından aldığı bilgi, deneyim ve meslek anlayışını kendi vizyonuyla birleştirerek inşaat sektöründeki yolculuğunu sürdürmektedir. Baba mesleğinin getirdiği tecrübeyi çağdaş yapı anlayışıyla buluşturan FARK YAPI, bugüne kadar birçok başarılı projeye imza atmış ve güvenilirliğiyle ön plana çıkmıştır.
+          </p>
+          <p class="about-text">
+            Her projemizde kaliteli malzeme, sağlam mühendislik, estetik mimari ve zamanında teslim ilkeleriyle hareket ediyor; müşterilerimize yalnızca bir daire değil, güvenli ve huzurlu yaşam alanları sunuyoruz.
+          </p>
+        </ng-container>
+        <h3 class="about-subtitle">Vizyonumuz</h3>
+        <p class="about-text">
+          Bursa ve İnegöl başta olmak üzere Türkiye'nin güvenilir ve tercih edilen inşaat firmalarından biri olmak; modern mimariyi, kaliteli işçiliği ve müşteri memnuniyetini bir araya getirerek geleceğe değer katan projeler üretmektir.
+        </p>
+        
+        <h3 class="about-subtitle">Misyonumuz</h3>
+        <p class="about-text">
+          Kaliteli malzeme, profesyonel ekip ve dürüst çalışma anlayışıyla güvenli yaşam alanları inşa etmek; müşterilerimizin beklentilerini en üst seviyede karşılayarak, zamanında teslim ve satış sonrası destek hizmetleriyle kalıcı güven oluşturmaktır.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>

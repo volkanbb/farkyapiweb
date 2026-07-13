@@ -1,0 +1,58 @@
+<main class="page-container">
+  <div class="page-header">
+    <div class="container">
+      <h1>PROJELER</h1>
+    </div>
+  </div>
+  
+  <div class="page-content">
+    <div class="container">
+      <div *ngIf="loading" class="loading-state">
+        Projeler yükleniyor...
+      </div>
+      
+      <div class="filter-container" *ngIf="!loading && projects.length > 0">
+        <button class="filter-btn" [class.active]="activeFilter === null" (click)="filterProjects(null)">Tümü</button>
+        <button class="filter-btn" [class.active]="activeFilter === 0" (click)="filterProjects(0)">Devam Edenler</button>
+        <button class="filter-btn" [class.active]="activeFilter === 1" (click)="filterProjects(1)">Tamamlananlar</button>
+        <button class="filter-btn" [class.active]="activeFilter === 2" (click)="filterProjects(2)">Gelecek Projeler</button>
+      </div>
+
+      <div class="projects-stack" *ngIf="!loading">
+        <div class="project-card" *ngFor="let p of paginatedProjects" [routerLink]="['/projelerimiz', p.slug]">
+           <div class="project-image">
+             <div class="status-badge" [ngClass]="getStatusClass(p.status)">
+               {{ getStatusText(p.status) }}
+             </div>
+             <img [src]="p.coverImageUrl || 'assets/images/placeholder.png'" [alt]="p.title">
+           </div>
+           <div class="project-info-container">
+             <div class="project-info">
+               <h2>{{ p.title }}</h2>
+               <p>{{ p.shortDescription }}</p>
+               <div class="view-more">DAHA FAZLA &rarr;</div>
+             </div>
+           </div>
+        </div>
+        
+        <div *ngIf="filteredProjects.length === 0" class="no-projects">
+          Henüz proje bulunmamaktadır.
+        </div>
+        
+        <div class="pagination" *ngIf="totalPages > 1">
+          <button class="page-btn prev" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+            &larr; Önceki
+          </button>
+          <div class="page-numbers">
+            <button class="page-btn" *ngFor="let p of pageNumbers" [class.active]="p === currentPage" (click)="changePage(p)">
+              {{ p }}
+            </button>
+          </div>
+          <button class="page-btn next" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+            Sonraki &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

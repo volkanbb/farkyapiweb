@@ -1,0 +1,126 @@
+<div class="projects-container">
+  <div class="header-actions">
+    <h2>Projeler</h2>
+    <button class="btn-blue" (click)="openAddForm()" *ngIf="!showForm">
+      <span class="material-icons-outlined">add</span> Yeni Proje Ekle
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Projeler yükleniyor...</div>
+
+  <!-- Form -->
+  <div class="white-card form-card" *ngIf="showForm">
+    <h3>{{ isEditing ? 'Projeyi Düzenle' : 'Yeni Proje Ekle' }}</h3>
+    <form [formGroup]="projectForm" (ngSubmit)="saveProject()">
+      <div class="form-group">
+        <label>Proje Adı (Title)</label>
+        <input type="text" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label>Bağlantı (Slug)</label>
+        <input type="text" formControlName="slug">
+      </div>
+      <div class="form-group">
+        <label>Proje Durumu</label>
+        <select formControlName="status">
+          <option [ngValue]="0">Devam Ediyor</option>
+          <option [ngValue]="1">Tamamlandı</option>
+          <option [ngValue]="2">Gelecek Proje</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Kısa Açıklama (Short Description) (Maks: 150 Karakter)</label>
+        <input type="text" formControlName="shortDescription" maxlength="150">
+      </div>
+      <div class="form-group">
+        <label>Detaylı Açıklama (Description)</label>
+        <textarea formControlName="description" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Kapak Görseli</label>
+        <input type="file" (change)="onCoverImageSelected($event)" accept="image/*">
+        <small *ngIf="isEditing && projectForm.value.coverImageUrl" style="display: block; margin-top: 5px;">
+          Mevcut Görsel: <a [href]="projectForm.value.coverImageUrl" target="_blank">Görüntüle</a>
+        </small>
+        <!-- We keep the hidden form control just in case we need its value -->
+        <input type="hidden" formControlName="coverImageUrl">
+      </div>
+
+      <div class="form-group" style="margin-top: 2rem;">
+        <h3>Galeri Görselleri</h3>
+        
+        <div *ngIf="!isEditing">
+          <label>Yeni Görseller (Toplu Yükleme)</label>
+          <input type="file" multiple (change)="onGalleryFilesSelected($event)" accept="image/*">
+        </div>
+
+        <div *ngIf="isEditing">
+          <div class="upload-section" style="margin-bottom: 1rem;">
+            <input type="file" multiple #galleryInput (change)="onGalleryFilesSelected($event)" style="display: none;" accept="image/*">
+            <button type="button" class="btn-blue-outline" (click)="galleryInput.click()" [disabled]="uploadingImage">
+              <span class="material-icons-outlined">upload</span> 
+              {{ uploadingImage ? 'Yükleniyor...' : 'Galeriye Görsel Ekle' }}
+            </button>
+          </div>
+
+          <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="drop($event)">
+            <div class="drag-drop-item" *ngFor="let img of projectImages" cdkDrag>
+              <div class="drag-handle" cdkDragHandle>
+                <span class="material-icons-outlined">drag_indicator</span>
+              </div>
+              <img [src]="img.imageUrl" alt="Proje Görseli" class="drag-image">
+              <button type="button" class="btn-icon delete-img" (click)="deleteImage(img.id)">
+                <span class="material-icons-outlined">delete</span>
+              </button>
+            </div>
+            <div *ngIf="projectImages.length === 0" class="no-images">
+              Henüz görsel yüklenmemiş.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" style="margin-top: 2rem;">
+        <button type="button" class="btn-blue-outline" (click)="cancelForm()">İptal</button>
+        <button type="submit" class="btn-blue" [disabled]="projectForm.invalid || saving">
+          {{ saving ? 'Kaydediliyor...' : 'Kaydet' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table -->
+  <div class="white-card" *ngIf="!showForm && !loading">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Görsel</th>
+          <th>Proje Adı</th>
+          <th>Slug</th>
+          <th>İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of projects">
+          <td>
+            <img *ngIf="p.coverImageUrl" [src]="p.coverImageUrl" alt="Kapak" class="cover-thumb">
+            <span *ngIf="!p.coverImageUrl" class="no-image">Görsel Yok</span>
+          </td>
+          <td>{{ p.title }}</td>
+          <td>{{ p.slug }}</td>
+          <td class="actions">
+            <button class="btn-icon edit" (click)="openEditForm(p)" title="Düzenle">
+              <span class="material-icons-outlined">edit</span>
+            </button>
+            <button class="btn-icon delete" (click)="deleteProject(p.id)" title="Sil">
+              <span class="material-icons-outlined">delete</span>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="projects.length === 0">
+          <td colspan="4" class="text-center">Henüz hiç proje eklenmemiş.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="admin-page-container">
+  <div class="admin-page-header">
+    <div class="header-title">
+      <h1>Site Ayarları</h1>
+      <p>Web sitenizin iletişim ve genel ayarlarını buradan yönetebilirsiniz.</p>
+    </div>
+  </div>
+
+  <div class="admin-page-content" *ngIf="!isLoading">
+    
+    <div class="alert alert-success" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div class="alert alert-error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()" class="settings-form">
+      
+      <div class="form-section">
+        <h3>Hakkımızda Sayfası</h3>
+        
+        <div class="form-group">
+          <label for="aboutTitle">Hakkımızda Başlığı</label>
+          <input 
+            type="text" 
+            id="aboutTitle" 
+            formControlName="aboutTitle" 
+            class="form-control" 
+            placeholder="Örn: Güvenle İnşa Ediyor..."
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="aboutDescription">Hakkımızda İçeriği (HTML Destekli)</label>
+          <textarea 
+            id="aboutDescription" 
+            formControlName="aboutDescription" 
+            class="form-control" 
+            rows="10"
+            placeholder="<p>Hakkımızda metni...</p>"
+          ></textarea>
+          <small class="form-text">Bu alan HTML etiketlerini destekler (Örn: &lt;p&gt;, &lt;strong&gt;, &lt;h3&gt;). Lütfen etiketleri bozmamaya özen gösterin.</small>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Sosyal Medya</h3>
+        
+        <div class="form-group">
+          <label for="instagramUrl">Instagram URL</label>
+          <input 
+            type="text" 
+            id="instagramUrl" 
+            formControlName="instagramUrl" 
+            class="form-control" 
+            placeholder="Örn: https://www.instagram.com/fark_yapi16/"
+          >
+          <small class="form-text">Footer bölümündeki Instagram ikonunun yönlendireceği bağlantı adresi.</small>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>İletişim Bilgileri (Gelecekteki Güncellemeler İçin)</h3>
+        
+        <div class="form-group">
+          <label for="address">Adres</label>
+          <textarea id="address" formControlName="address" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="text" id="phone" formControlName="phone" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-Posta</label>
+          <input type="email" id="email" formControlName="email" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="isSaving">
+          {{ isSaving ? 'Kaydediliyor...' : 'Ayarları Kaydet' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="loading-state" *ngIf="isLoading">
+    <p>Ayarlar yükleniyor...</p>
+  </div>
+</div>

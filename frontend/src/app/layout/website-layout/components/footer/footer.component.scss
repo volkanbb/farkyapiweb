@@ -1,0 +1,52 @@
+.website-footer {
+  background-color: var(--footer-bg);
+  padding: 4rem 0;
+  color: var(--footer-text);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+  .brand-logo.footer-logo {
+    height: 70px; /* Make it slightly bigger in footer if desired, or keep same */
+    width: auto;
+    object-fit: contain;
+    /* Optional: If the original logo is dark, you can use CSS filters to make it white in the dark footer */
+    filter: brightness(0) invert(1);
+  }
+}
+
+.footer-contact {
+  h3 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    
+    .material-icons-outlined {
+      font-size: 1.25rem;
+      color: var(--footer-text);
+    }
+  }
+}

@@ -1,0 +1,133 @@
+:root {
+  /* Colors based on Figma */
+  --primary-blue: #008cd2;
+  --primary-blue-hover: #007bb5;
+  --bg-light-blue: #dceef7;
+  --bg-primary: #f4f6f9;
+  --bg-white: #ffffff;
+  --text-dark: #333333;
+  --text-muted: #666666;
+  --footer-bg: #2a2c30;
+  --footer-text: #cccccc;
+  
+  --sidebar-width: 250px;
+  
+  --font-family: 'Inter', sans-serif;
+  --transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Common Components */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.btn-blue {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  &:hover {
+    background-color: var(--primary-blue-hover);
+  }
+}
+
+.btn-blue-outline {
+  background-color: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  
+  &:hover {
+    background-color: var(--primary-blue);
+    color: white;
+  }
+}
+
+/* Page Layout Utilities */
+.page-container {
+  width: 100%;
+}
+
+.page-header {
+  background-color: var(--primary-blue);
+  padding: 4rem 0;
+  text-align: left;
+  
+  @media (max-width: 768px) {
+    padding: 2.5rem 0;
+  }
+
+  h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: 1px;
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.page-content {
+  padding: 4rem 0;
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 0;
+  }
+}
+
+.bg-light-blue {
+  background-color: var(--bg-light-blue);
+}
+
+.white-card {
+  background: white;
+  padding: 4rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+}
