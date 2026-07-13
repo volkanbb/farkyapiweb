@@ -1,4 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -27,7 +28,14 @@ export interface ProjectDto {
 })
 export class ApiService {
   private http = inject(HttpClient);
-  private apiUrl = '/api/v1';
+  private platformId = inject(PLATFORM_ID);
+  
+  private get apiUrl(): string {
+    if (isPlatformServer(this.platformId)) {
+      return 'http://backend:8080/api/v1';
+    }
+    return '/api/v1';
+  }
 
   getProjects(): Observable<ProjectDto[]> {
     return this.http.get<ProjectDto[]>(`${this.apiUrl}/projects`);
