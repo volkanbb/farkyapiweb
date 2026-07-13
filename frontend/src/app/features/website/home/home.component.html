@@ -26,13 +26,13 @@
           <h2 class="about-title" *ngIf="settings?.aboutTitle" [innerHTML]="settings?.aboutTitle"></h2>
           <h2 class="about-title" *ngIf="!settings?.aboutTitle">Güvenle İnşa Ediyor,<br>Geleceği Birlikte Yükseltiyoruz</h2>
           
-          <div *ngIf="settings?.aboutDescription" [innerHTML]="settings?.aboutDescription"></div>
+          <div class="about-text-preview" *ngIf="settings?.aboutDescription" [innerHTML]="settings?.aboutDescription"></div>
           
-          <ng-container *ngIf="!settings?.aboutDescription">
+          <div class="about-text-preview" *ngIf="!settings?.aboutDescription">
             <p>2015 yılından bu yana Bursa'nın İnegöl ilçesinde faaliyet gösteren FARK YAPI, kalite, güven ve müşteri memnuniyetini esas alarak modern yaşam alanları inşa etmektedir.</p>
             <p>Kurucumuz Faruk Çengel, yaklaşık 40 yıllık müteahhitlik tecrübesine sahip babasından aldığı bilgi, deneyim ve meslek anlayışını kendi vizyonuyla birleştirerek inşaat sektöründeki yolculuğunu sürdürmektedir. Baba mesleğinin getirdiği tecrübeyi çağdaş yapı anlayışıyla buluşturan FARK YAPI, bugüne kadar birçok başarılı projeye imza atmış ve güvenilirliğiyle ön plana çıkmıştır.</p>
             <p>Her projemizde kaliteli malzeme, sağlam mühendislik, estetik mimari ve zamanında teslim ilkeleriyle hareket ediyor; müşterilerimize yalnızca bir daire değil, güvenli ve huzurlu yaşam alanları sunuyoruz.</p>
-          </ng-container>
+          </div>
           
           <a routerLink="/hakkimizda" class="btn-white">DAHA FAZLA &rarr;</a>
         </div>

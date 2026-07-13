@@ -125,11 +125,21 @@ $text-dark: #333;
     margin-bottom: 2rem;
   }
   
-  p {
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  .about-text-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* Adjust the number of lines to show approx 2 paragraphs */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2rem;
+
+    /* To ensure tags inside don't break the layout */
+    ::ng-deep p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
   }
   
   .btn-white {
