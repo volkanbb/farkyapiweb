@@ -10,6 +10,7 @@ export interface Project {
   projectYear?: number;
   projectDate?: Date | string;
   status: number;
+  displayOrder?: number;
   mainImageUrl?: string;
   coverImageUrl?: string;
   categoryId?: string;

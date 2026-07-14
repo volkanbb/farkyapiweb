@@ -22,5 +22,7 @@ public class Project : BaseEntity
 
     public Domain.Enums.ProjectStatus Status { get; set; } = Domain.Enums.ProjectStatus.Ongoing;
 
+    public int DisplayOrder { get; set; } = 0;
+
     public ICollection<ProjectImage> Images { get; set; } = new List<ProjectImage>();
 }

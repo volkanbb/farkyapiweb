@@ -242,4 +242,25 @@ export class ProjectsComponent implements OnInit {
       });
     }
   }
+
+  dropProject(event: any) {
+    if (event.previousIndex === event.currentIndex) {
+      return;
+    }
+
+    const movedProject = this.projects[event.previousIndex];
+    this.projects.splice(event.previousIndex, 1);
+    this.projects.splice(event.currentIndex, 0, movedProject);
+
+    // Update displayOrder locally and prepare payload
+    const payload = this.projects.map((p, index) => {
+      p.displayOrder = index;
+      return { id: p.id, displayOrder: index };
+    });
+
+    this.api.reorderProjects(payload).subscribe({
+      next: () => console.log('Projects reordered successfully'),
+      error: (err) => console.error('Project reorder failed', err)
+    });
+  }
 }

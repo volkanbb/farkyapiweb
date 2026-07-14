@@ -101,4 +101,11 @@ public class ProjectsController : ControllerBase
 
         return NoContent();
     }
+    [HttpPut("reorder")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> ReorderProjects([FromBody] Application.Features.Projects.Commands.ReorderProjectsCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return NoContent();
+    }
 }

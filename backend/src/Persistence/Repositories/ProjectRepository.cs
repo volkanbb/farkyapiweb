@@ -16,7 +16,8 @@ public class ProjectRepository : Repository<Project>, IProjectRepository
         return await _dbContext.Projects
             .Include(p => p.Category)
             .Where(p => !p.IsDeleted)
-            .OrderByDescending(p => p.CreatedAt)
+            .OrderBy(p => p.DisplayOrder)
+            .ThenByDescending(p => p.CreatedAt)
             .ToListAsync();
     }
 

@@ -20,6 +20,7 @@ export interface ProjectDto {
   categoryId?: string;
   projectDate?: string;
   status: number;
+  displayOrder?: number;
   images?: ProjectImageDto[];
 }
 
@@ -57,6 +58,10 @@ export class ApiService {
 
   reorderProjectImages(projectId: string, imageIds: string[]): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/projects/${projectId}/images/reorder`, imageIds);
+  }
+
+  reorderProjects(projects: { id: string; displayOrder: number }[]): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/projects/reorder`, { projects });
   }
 
   get<T>(endpoint: string): Observable<T> {
