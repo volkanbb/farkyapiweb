@@ -11,7 +11,7 @@ namespace Api.Controllers;
 public class SitemapController : ControllerBase
 {
     private readonly IRepository<Project> _projectRepository;
-    private readonly string _baseUrl = "https://farkyapi.com";
+    private readonly string _baseUrl = "https://farkyapiinsaat.com";
 
     public SitemapController(IRepository<Project> projectRepository)
     {
