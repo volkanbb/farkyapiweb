@@ -156,7 +156,8 @@
   <section class="activity-region">
     <div class="container">
       <h2 class="section-title-white">FAALİYET BÖLGEMİZ</h2>
-      <ul class="activity-list">
+      <ul class="activity-list" *ngIf="settings?.activityRegionText" [innerHTML]="settings?.activityRegionText"></ul>
+      <ul class="activity-list" *ngIf="!settings?.activityRegionText">
         <li>FARK YAPI olarak ağırlıklı olarak Bursa / İnegöl bölgesinde faaliyet göstermekte ve bölgenin gelişimine değer katan konut projeleri üretmekteyiz.</li>
         <li>Devam Eden Projeler</li>
         <li>Devam eden projelerimize ait güncel fotoğraflar ve bilgiler bu bölümde düzenli olarak paylaşılacaktır.</li>

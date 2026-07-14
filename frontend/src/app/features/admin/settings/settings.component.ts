@@ -26,6 +26,7 @@ export class SettingsComponent implements OnInit {
     this.settingsForm = this.fb.group({
       aboutTitle: [''],
       aboutDescription: [''],
+      activityRegionText: [''],
       instagramUrl: [''],
       address: [''],
       phone: [''],
@@ -63,9 +64,14 @@ export class SettingsComponent implements OnInit {
   Kaliteli malzeme, profesyonel ekip ve dürüst çalışma anlayışıyla güvenli yaşam alanları inşa etmek; müşterilerimizin beklentilerini en üst seviyede karşılayarak, zamanında teslim ve satış sonrası destek hizmetleriyle kalıcı güven oluşturmaktır.
 </p>`;
 
+        const defaultActivityRegionText = `<li>FARK YAPI olarak ağırlıklı olarak Bursa / İnegöl bölgesinde faaliyet göstermekte ve bölgenin gelişimine değer katan konut projeleri üretmekteyiz.</li>
+<li>Devam Eden Projeler</li>
+<li>Devam eden projelerimize ait güncel fotoğraflar ve bilgiler bu bölümde düzenli olarak paylaşılacaktır.</li>`;
+
         this.settingsForm.patchValue({
           aboutTitle: settings?.aboutTitle || defaultAboutTitle,
           aboutDescription: settings?.aboutDescription || defaultAboutDescription,
+          activityRegionText: settings?.activityRegionText || defaultActivityRegionText,
           instagramUrl: settings?.instagramUrl || '',
           address: settings?.address || '',
           phone: settings?.phone || '',

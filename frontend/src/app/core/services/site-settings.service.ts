@@ -33,6 +33,8 @@ export interface SiteSetting {
   aboutTitle?: string;
   aboutDescription?: string;
   aboutImageUrl?: string;
+
+  activityRegionText?: string;
 }
 
 @Injectable({

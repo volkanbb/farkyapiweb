@@ -37,6 +37,8 @@ public class UpdateSiteSettingsCommand : IRequest<SiteSettingDto>
     public string? AboutTitle { get; set; }
     public string? AboutDescription { get; set; }
     public string? AboutImageUrl { get; set; }
+
+    public string? ActivityRegionText { get; set; }
 }
 
 public class UpdateSiteSettingsCommandHandler : IRequestHandler<UpdateSiteSettingsCommand, SiteSettingDto>

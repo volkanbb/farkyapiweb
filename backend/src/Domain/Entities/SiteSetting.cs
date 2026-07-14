@@ -39,4 +39,7 @@ public class SiteSetting : BaseEntity
     public string? AboutTitle { get; set; }
     public string? AboutDescription { get; set; }
     public string? AboutImageUrl { get; set; }
+
+    // Activity Region Section
+    public string? ActivityRegionText { get; set; }
 }
